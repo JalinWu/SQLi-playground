@@ -29,7 +29,7 @@ router.get('/reset', (req, res) => {
         // var query = "SELECT rowid AS id, class, name, score FROM score WHERE class = 'A' and name = '" + q1 + "'";
         var query = "SELECT rowid AS id, class, name, score FROM score WHERE class = 'A'";
         console.log(query);
-        
+
         db.each(query, function (err, row) {
             //log 出所有的資料
             console.log(row.id + ": " + row.class + " | " + row.name + " | " + row.score);
@@ -38,5 +38,36 @@ router.get('/reset', (req, res) => {
 
     res.send('Hello World!');
 });
+
+// search
+router.post('/search', (req, res) => {
+    const { name } = req.body;
+
+    db.serialize(() => {
+        var query = "SELECT rowid AS id, class, name, score FROM score WHERE class = 'A' and name = '" + name + "'";
+        // var query = "SELECT rowid AS id, class, name, score FROM score WHERE class = 'A' and name = ?";
+        console.log(query);
+
+        var queries = query.split(';');
+        for (var i = 0; i < queries.length; i++) {
+
+            if (queries[i]) {
+                var q = queries[i].trim().split(' ');
+
+                if (q[0].toLowerCase() == 'select') {
+                    db.each(queries[i], function (err, row) {
+                        console.log(row.id + ": " + row.class + " | " + row.name + " | " + row.score);
+                    });
+                } else if (q[0].toLowerCase() == 'insert' || q[0].toLowerCase() == 'update' || q[0].toLowerCase() == 'delete') {
+                    db.run(queries[i]);
+                }
+
+            }
+
+        }
+
+    })
+    res.send('Hello World!');
+})
 
 module.exports = router;
