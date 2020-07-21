@@ -1,5 +1,5 @@
 # SQLi-playground
 
-[![Github all releases](https://img.shields.io/github/downloads/JalinWu/SQLi-playground/total.svg)](https://github.com/JalinWu/SQLi-playground/releases/)
+[![GitHub stars](https://img.shields.io/github/stars/JalinWu/SQLi-playground)](https://github.com/JalinWu/SQLi-playground/stargazers)
 
 It's a teaching material
