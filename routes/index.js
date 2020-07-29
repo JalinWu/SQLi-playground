@@ -8,7 +8,9 @@ var db = new sqlite3.Database(file);
 // gameRule
 router.get('/', (req, res) => {
     res.render('gameRule', {
-
+        gameRuleActive: "active",
+        gameStartActive: "",
+        solutionsActive: ""
     })
 });
 
@@ -21,9 +23,17 @@ router.get('/gameStart', (req, res) => {
         console.log(query);
 
         db.all(query, (err, rows) => {
-            scoreTable = rows;
+            if(rows){
+                scoreTable = rows;
+            } else {
+                scoreTable = [];
+            }
+            
             res.render('gameStart', {
-                scoreTable
+                scoreTable,
+                gameRuleActive: "",
+                gameStartActive: "active",
+                solutionsActive: ""
             });
         });
 
@@ -34,7 +44,9 @@ router.get('/gameStart', (req, res) => {
 // solutions
 router.get('/solutions', (req, res) => {
     res.render('solutions', {
-
+        gameRuleActive: "",
+        gameStartActive: "",
+        solutionsActive: "active"
     });
 })
 

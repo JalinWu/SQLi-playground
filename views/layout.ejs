@@ -51,19 +51,19 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="nav-item  ">
+                    <li id="game-rule" class="nav-item  <%= gameRuleActive %>">
                         <a class="nav-link" href="/">
                             <i class="material-icons">rule</i>
                             <p>Game rule</p>
                         </a>
                     </li>
-                    <li class="nav-item active ">
+                    <li id="game-start" class="nav-item <%= gameStartActive %>">
                         <a class="nav-link" href="/gameStart">
                             <i class="material-icons">golf_course</i>
                             <p>Game start</p>
                         </a>
                     </li>
-                    <li class="nav-item active-pro ">
+                    <li id="solutions" class="nav-item active-pro <%= solutionsActive%>">
                         <a class="nav-link" href="/solutions">
                             <i class="material-icons">library_books</i>
                             <p>Solutions</p>

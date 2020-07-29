@@ -28,6 +28,7 @@ router.get('/reset', (req, res) => {
         sqlInsertDefault.finalize();
 
         // var q1 = "Andy' or 1=1; '";
+        // var q1 = "Andy' or 1=1; update score set score=100 where name='Andy'; '";
         // var query = "SELECT rowid AS id, class, name, score FROM score WHERE class = 'A' and name = '" + q1 + "'";
         var query = "SELECT rowid AS id, class, name, score FROM score WHERE class = 'A'";
         console.log(query);
@@ -69,9 +70,12 @@ router.post('/search', (req, res) => {
             }
 
         }
+        db.all(queries[0], (err, rows) => {
+            res.send(rows);
+        })
 
     })
-    res.send('Hello World!');
+    // res.send('Hello World!');
 })
 
 module.exports = router;
