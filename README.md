@@ -4,4 +4,19 @@
 
 It's a teaching material
 
+## Screenshots
+
 ![image](https://raw.githubusercontent.com/JalinWu/SQLi-playground/master/public/img/demo.png)
+
+## Usage
+
+```sh
+$ npm install
+```
+
+```sh
+# Run with Nodemon
+$ npm run dev
+
+# Visit http://localhost:3000
+```
