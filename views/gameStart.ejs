@@ -18,24 +18,19 @@
                             <p class="card-category">輸入學生姓名快速查找</p>
                         </div>
                         <div class="card-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">姓名</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                                <div class="clearfix"></div>
-                            </form>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="bmd-label-floating">SQL 語法</label>
-                                        <input type="text" class="form-control" value="test" readonly>
-                                    </div>
+                                    <label class="bmd-label-floating">姓名</label>
+                                    <input id="search-name" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <button id="search-btn" type="submit" class="btn btn-primary pull-right">搜尋</button>
+                            <div class="clearfix"></div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="bmd-label-floating">SQL 語法</label>
+                                    <input id="search-sql" type="text" class="form-control" 
+                                    value="SELECT rowid AS id, class, name, score FROM score WHERE class = 'A' and name = ''" readonly>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +44,7 @@
                                     <h4 class="card-title ">學生成績表</h4>
                                     <p class="card-category">以下為 A 班學生成績總表</p>
                                 </div>
-                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                <ul class="nav nav-tabs" id="reset-btn" data-tabs="tabs">
                                     <li class="nav-item">
                                         <a class="nav-link active" href="#profile" data-toggle="tab">
                                             <i class="material-icons">restore</i> Reset
@@ -62,7 +57,7 @@
 
 
                         </div>
-                        <div class="card-body">
+                        <div class="card-body micro-jhen-hei">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class=" text-primary">
@@ -70,121 +65,33 @@
                                             ID
                                         </th>
                                         <th>
-                                            Name
+                                            班級
                                         </th>
                                         <th>
-                                            Country
+                                            姓名
                                         </th>
                                         <th>
-                                            City
-                                        </th>
-                                        <th>
-                                            Salary
+                                            分數
                                         </th>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="score-tbody">
+                                        <% for (var i = 0; i < scoreTable.length; i++) { %>
                                         <tr>
                                             <td>
-                                                1
+                                                <%= scoreTable[i].id %>
                                             </td>
                                             <td>
-                                                Dakota Rice
+                                                <%= scoreTable[i].class %>
                                             </td>
                                             <td>
-                                                Niger
+                                                <%= scoreTable[i].name %>
                                             </td>
                                             <td>
-                                                Oud-Turnhout
-                                            </td>
-                                            <td class="text-primary">
-                                                $36,738
+                                                <%= scoreTable[i].score %>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                Minerva Hooper
-                                            </td>
-                                            <td>
-                                                Curaçao
-                                            </td>
-                                            <td>
-                                                Sinaai-Waas
-                                            </td>
-                                            <td class="text-primary">
-                                                $23,789
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                Sage Rodriguez
-                                            </td>
-                                            <td>
-                                                Netherlands
-                                            </td>
-                                            <td>
-                                                Baileux
-                                            </td>
-                                            <td class="text-primary">
-                                                $56,142
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                4
-                                            </td>
-                                            <td>
-                                                Philip Chaney
-                                            </td>
-                                            <td>
-                                                Korea, South
-                                            </td>
-                                            <td>
-                                                Overland Park
-                                            </td>
-                                            <td class="text-primary">
-                                                $38,735
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                Doris Greene
-                                            </td>
-                                            <td>
-                                                Malawi
-                                            </td>
-                                            <td>
-                                                Feldkirchen in Kärnten
-                                            </td>
-                                            <td class="text-primary">
-                                                $63,542
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                6
-                                            </td>
-                                            <td>
-                                                Mason Porter
-                                            </td>
-                                            <td>
-                                                Chile
-                                            </td>
-                                            <td>
-                                                Gloucester
-                                            </td>
-                                            <td class="text-primary">
-                                                $78,615
-                                            </td>
-                                        </tr>
+                                        <% } %>
+
                                     </tbody>
                                 </table>
                             </div>

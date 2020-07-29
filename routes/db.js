@@ -7,6 +7,8 @@ var db = new sqlite3.Database(file);
 
 // reset
 router.get('/reset', (req, res) => {
+    var scoreTable = new Array();
+
     db.serialize(() => {
         // 如果 score 資料表不存在，那就建立 score 資料表
         db.run("CREATE TABLE IF NOT EXISTS  score (class TEXT, name TEXT, score INTEGER)");
@@ -30,13 +32,15 @@ router.get('/reset', (req, res) => {
         var query = "SELECT rowid AS id, class, name, score FROM score WHERE class = 'A'";
         console.log(query);
 
-        db.each(query, function (err, row) {
-            //log 出所有的資料
-            console.log(row.id + ": " + row.class + " | " + row.name + " | " + row.score);
-        });
+        db.all(query, (err, rows) => {
+            console.log(rows);
+            scoreTable = rows;
+            res.send(
+                scoreTable
+            );
+        })
     })
 
-    res.send('Hello World!');
 });
 
 // search
