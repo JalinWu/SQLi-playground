@@ -20,10 +20,19 @@ router.get('/reset', (req, res) => {
         var sqlInsertDefault = db.prepare("INSERT INTO score VALUES (?, ?, ?)");
         sqlInsertDefault.run("A", "Andy", 80);
         sqlInsertDefault.run("A", "Eric", 85);
-        sqlInsertDefault.run("A", "Mary", 75);
-        sqlInsertDefault.run("B", "John", 90);
+        sqlInsertDefault.run("A", "Hank", 75);
+        sqlInsertDefault.run("A", "David", 90);
+        sqlInsertDefault.run("A", "Olivia", 88);
+        sqlInsertDefault.run("B", "Henry", 90);
         sqlInsertDefault.run("B", "Kevin", 95);
-        sqlInsertDefault.run("B", "Linda", 80);
+        sqlInsertDefault.run("B", "Alice", 80);
+        sqlInsertDefault.run("B", "James", 86);
+        sqlInsertDefault.run("B", "Kenny", 88);
+        sqlInsertDefault.run("C", "Kevin", 92);
+        sqlInsertDefault.run("C", "Linda", 80);
+        sqlInsertDefault.run("C", "Joe", 65);
+        sqlInsertDefault.run("C", "Sam", 70);
+        sqlInsertDefault.run("C", "May", 75);
 
         sqlInsertDefault.finalize();
 
